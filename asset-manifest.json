@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Phonebook-in-progress-login-user/static/css/main.0c1749a3.css",
+    "main.js": "/Phonebook-in-progress-login-user/static/js/main.ecad5955.js",
+    "index.html": "/Phonebook-in-progress-login-user/index.html",
+    "main.0c1749a3.css.map": "/Phonebook-in-progress-login-user/static/css/main.0c1749a3.css.map",
+    "main.ecad5955.js.map": "/Phonebook-in-progress-login-user/static/js/main.ecad5955.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0c1749a3.css",
+    "static/js/main.ecad5955.js"
+  ]
+}
