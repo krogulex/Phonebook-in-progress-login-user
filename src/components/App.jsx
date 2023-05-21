@@ -1,11 +1,12 @@
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/operations';
 import { useEffect, lazy } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'redux/auth/useAuth';
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -14,12 +15,15 @@ const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+    ) : (
     <div className="content-box">
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -43,7 +47,7 @@ export const App = () => {
             }
           />
           <Route
-            path="/tasks"
+            path="/contacts"
             element={
               <PrivateRoute redirectTo="/contacts" component={<ContactsPage />} />
             }
