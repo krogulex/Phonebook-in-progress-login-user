@@ -18,7 +18,7 @@ export default function Contacts() {
     useEffect(() => {
       dispatch(fetchContacts());
     }, [dispatch]);
-  
+    
     return (
       <div className="content-box">
         <ContactForm />
