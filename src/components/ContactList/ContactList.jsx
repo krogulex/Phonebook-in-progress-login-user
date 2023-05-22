@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contacts/operations';
-import { selectContacts, selectFilteredContacts } from 'redux/contacts/selectors';
+import {
+  selectContacts,
+  selectFilteredContacts,
+} from 'redux/contacts/selectors';
+
+import { Button } from '@chakra-ui/react';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
@@ -13,23 +18,26 @@ export const ContactList = () => {
 
   return (
     <div>
-      {contacts.length > filteredContacts.length &&
-      filteredContacts.length === 0 ? (
+      {contacts.length === 0 ? (
+        <p>No contacts yet</p>
+      ) : filteredContacts.length === 0 ? (
         <p>No contacts found</p>
       ) : (
         filteredContacts.map(element => {
           return (
             <div key={element.id} id={element.id} className="contact-item">
+              <span>&#9990;</span>
               <p>
                 <span>{element.name}: </span>
                 {element.phone}
               </p>
-              <button
+              <Button
+                colorScheme="teal"
                 className="contact-delete"
                 onClick={() => handleDelete(element.id)}
               >
-                delete
-              </button>
+                Delete
+              </Button>
             </div>
           );
         })

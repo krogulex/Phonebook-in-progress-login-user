@@ -20,8 +20,9 @@ export default function Contacts() {
     }, [dispatch]);
     
     return (
-      <div className="content-box">
+      <div className='page-contacts'>
         <ContactForm />
+        <h2>Contacts</h2>
         <Filter />
         {isLoading && !error && (
           <div className='loader'>
@@ -29,7 +30,7 @@ export default function Contacts() {
               height="80"
               width="80"
               radius="9"
-              color="#008CBA"
+              color="#319795"
               ariaLabel="three-dots-loading"
               wrapperStyle={{}}
               wrapperClassName=""
@@ -49,7 +50,7 @@ export default function Contacts() {
               height="80"
               width="80"
               radius="9"
-              color="#008CBA"
+              color="#319795"
               ariaLabel="three-dots-loading"
               wrapperStyle={{}}
               wrapperClassName=""
