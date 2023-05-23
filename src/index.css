@@ -166,6 +166,7 @@ h3 {
  display: flex;
  align-items: center;
  justify-content: center;
+ flex-direction: column;
 }
 .page-contacts {
   min-height: calc(100vh - 120px);
@@ -178,4 +179,26 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.home-button {
+  margin-top: 20px;
+}
+
+.register-acc {
+  margin-top: 15px;
+}
+.register-acc a {
+ color: teal;
+ text-decoration: underline;
+}
+.loading-site {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.active {
+  border: 10px black;
 }

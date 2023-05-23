@@ -11,7 +11,7 @@ export const Navigation = () => {
       <NavLink to="/">
         <Button colorScheme="teal">Home</Button>
       </NavLink>
-      {isLoggedIn && <NavLink to="/contacts"><Button colorScheme="teal">Contacts</Button></NavLink>}
+      {isLoggedIn && <NavLink to="/contacts"><Button className='active' colorScheme="brand.600">Contacts</Button></NavLink>}
     </nav>
   );
 };

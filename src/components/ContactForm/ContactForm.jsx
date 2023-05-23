@@ -34,7 +34,6 @@ export const ContactForm = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
       <h2>Add new contact</h2>
       <form className="form" onSubmit={handleSubmit}>
         <Input

@@ -18,8 +18,14 @@ const theme = extendBaseTheme({
   components: {
     Button,
     Input,
+    
   },
-})
+  colors: {
+    brand: {
+      500: "#319795",
+      600: "#2C7A7B",
+    },
+}})
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ChakraBaseProvider theme={theme}>

@@ -8,6 +8,8 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
 import { useAuth } from 'redux/auth/useAuth';
 
+import { ThreeDots } from 'react-loader-spinner';
+
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import('../pages/Login'));
@@ -22,8 +24,20 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
-    ) : (
+    <div className="loading-site">
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#319795"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        wrapperClassName=""
+        visible={true}
+        ma
+      />
+    </div>
+  ) : (
     <div className="content-box">
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -49,7 +63,10 @@ export const App = () => {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute redirectTo="/contacts" component={<ContactsPage />} />
+              <PrivateRoute
+                redirectTo="/contacts"
+                component={<ContactsPage />}
+              />
             }
           />
         </Route>

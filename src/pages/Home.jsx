@@ -1,4 +1,5 @@
-
+import { NavLink } from "react-router-dom";
+import { Button } from "@chakra-ui/react";
 
 export default function Home() {
     return (
@@ -9,6 +10,9 @@ export default function Home() {
           📖
           </span>
         </h1>
+        <NavLink to="/register" className='home-button'>
+        <Button colorScheme="teal">Get started</Button>{' '}
+      </NavLink>
       </div>
     );
   }

@@ -1,22 +1,20 @@
 import axios from 'axios';
+import { Notify } from 'notiflix';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
 
-// Utility to add JWT
+//Add JWT
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-// Utility to remove JWT
+//Remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-/*
- * POST @ /users/signup
- * body: { name, email, password }
- */
+//Register User
 export const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
@@ -24,17 +22,20 @@ export const register = createAsyncThunk(
       const res = await axios.post('/users/signup', credentials);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
+      Notify.success('Registrated succesfully!', {
+        timeout: 500,
+      });
       return res.data;
     } catch (error) {
+      Notify.failure('Registration failed!', {
+        timeout: 500,
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-/*
- * POST @ /users/login
- * body: { email, password }
- */
+//Login user
 export const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
@@ -42,31 +43,32 @@ export const logIn = createAsyncThunk(
       const res = await axios.post('/users/login', credentials);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
+      Notify.success('Login sucess!', {
+        timeout: 500,
+      });
       return res.data;
     } catch (error) {
+      Notify.failure('Login failed!', {
+        timeout: 500,
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-/*
- * POST @ /users/logout
- * headers: Authorization: Bearer token
- */
+//LogOut
 export const logOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await axios.post('/users/logout');
     // After a successful logout, remove the token from the HTTP header
     clearAuthHeader();
   } catch (error) {
+    clearAuthHeader();
     return thunkAPI.rejectWithValue(error.message);
   }
 });
 
-/*
- * GET @ /users/current
- * headers: Authorization: Bearer token
- */
+//Refreshing
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
@@ -82,7 +84,7 @@ export const refreshUser = createAsyncThunk(
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
