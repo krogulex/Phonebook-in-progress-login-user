@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[415],{5415:function(e,n,t){t.r(n),t.d(n,{default:function(){return r}});var a=t(184);function r(){return(0,a.jsx)("div",{className:"page-content",children:(0,a.jsxs)("h1",{children:["Manage your Contacts!"," ",(0,a.jsx)("span",{role:"img","aria-label":"Greeting icon",children:"\ud83d\udcd6"})]})})}}}]);
-//# sourceMappingURL=415.817a5817.chunk.js.map
